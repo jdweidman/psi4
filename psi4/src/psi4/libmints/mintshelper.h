@@ -241,6 +241,8 @@ class PSI_API MintsHelper {
     std::vector<SharedMatrix> ao_dipole();
     /// Vector AO Quadrupole Integrals
     std::vector<SharedMatrix> ao_quadrupole();
+    /// Vector AO Multipole Integrals
+    std::vector<SharedMatrix> ao_multipole(int order);
     /// Vector AO Traceless Quadrupole Integrals
     std::vector<SharedMatrix> ao_traceless_quadrupole();
     /// AO EFP Multipole Potential Integrals

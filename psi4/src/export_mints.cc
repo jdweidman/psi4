@@ -984,6 +984,7 @@ void export_mints(py::module& m) {
         .def("so_dipole", &MintsHelper::so_dipole, "Vector SO dipole integrals")
         .def("ao_quadrupole", &MintsHelper::ao_quadrupole, "Vector AO quadrupole integrals")
         .def("so_quadrupole", &MintsHelper::so_quadrupole, "Vector SO quadrupole integrals")
+        .def("ao_multipole", &MintsHelper::ao_multipole, "Vector AO multipole integrals")
         .def("ao_traceless_quadrupole", &MintsHelper::ao_traceless_quadrupole,
              "Vector AO traceless quadrupole integrals")
         .def("so_traceless_quadrupole", &MintsHelper::so_traceless_quadrupole,

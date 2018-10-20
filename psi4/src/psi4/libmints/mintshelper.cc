@@ -1446,6 +1446,16 @@ std::vector<SharedMatrix> MintsHelper::ao_quadrupole() {
     return quadrupole;
 }
 
+std::vector<SharedMatrix> MintsHelper::ao_multipole(int order) {
+    // Create a vector of matrices with the proper symmetry
+    std::vector<SharedMatrix> multipole;
+
+    std::shared_ptr<OneBodyAOInt> ints(integral_->ao_multipoles(order));
+    ints->compute(multipole);
+
+    return multipole;
+}
+
 std::vector<SharedMatrix> MintsHelper::ao_traceless_quadrupole() {
     // Create a vector of matrices with the proper symmetry
     std::vector<SharedMatrix> quadrupole;
