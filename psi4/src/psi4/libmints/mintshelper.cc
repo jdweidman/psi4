@@ -1447,8 +1447,31 @@ std::vector<SharedMatrix> MintsHelper::ao_quadrupole() {
 }
 
 std::vector<SharedMatrix> MintsHelper::ao_multipole(int order) {
-    // Create a vector of matrices with the proper symmetry
+    // The number of multipole components 
+    int n_mult = (order + 1) * (order + 2) / 2;
+    
+    //Create a vector of matrices with the proper symmetry
     std::vector<SharedMatrix> multipole;
+
+    multipole.push_back(std::make_shared<Matrix>("AO Mux", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Muy", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Muz", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Quadrupole XX", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Quadrupole XY", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Quadrupole XZ", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Quadrupole YY", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Quadrupole YZ", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Quadrupole ZZ", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole XXX", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole XXY", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole XXZ", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole XYY", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole XYZ", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole XZZ", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole YYY", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole YYZ", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole YZZ", basisset_->nbf(), basisset_->nbf()));
+    multipole.push_back(std::make_shared<Matrix>("AO Octupole ZZZ", basisset_->nbf(), basisset_->nbf()));
 
     std::shared_ptr<OneBodyAOInt> ints(integral_->ao_multipoles(order));
     ints->compute(multipole);
